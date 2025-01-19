@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://binbcp1671o4r"]
+
+[ext_resource type="Texture2D" uid="uid://cvykvswgdeyoy" path="res://Assets/Img/White.png" id="1_uxpyv"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8w8n2"]
+
+[node name="Boundary" type="StaticBody2D"]
+position = Vector2(0, 325)
+scale = Vector2(44.1483, 0.4937)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(1, 1)
+texture = ExtResource("1_uxpyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_8w8n2")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]

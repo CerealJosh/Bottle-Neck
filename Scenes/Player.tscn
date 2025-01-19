@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://qrghymv4a8nt"]
+
+[ext_resource type="Texture2D" uid="uid://cqpgjrnlhwu3" path="res://Assets/Img/ball2.png" id="1_2gcy0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s64rr"]
+height = 34.0
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.49999, -2.38419e-07)
+scale = Vector2(3.69, 2)
+texture = ExtResource("1_2gcy0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_s64rr")
