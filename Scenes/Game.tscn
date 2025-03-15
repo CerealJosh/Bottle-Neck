@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckcuxnb42vxt5"]
+[gd_scene load_steps=10 format=3 uid="uid://ckcuxnb42vxt5"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_rvxtf"]
 [ext_resource type="PackedScene" uid="uid://qrghymv4a8nt" path="res://Scenes/Player.tscn" id="1_ytgs0"]
@@ -7,12 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://bexvgjglldcxe" path="res://Scenes/TopBoundary.tscn" id="4_d5j0l"]
 [ext_resource type="Texture2D" uid="uid://bdfm3hp58rqr0" path="res://Assets/Img/Background2.png" id="6_lapuc"]
 [ext_resource type="PackedScene" uid="uid://dvxepb2suhjpb" path="res://Scenes/logs.tscn" id="7_p45cl"]
+[ext_resource type="FontFile" uid="uid://cqhw4pw3wf31f" path="res://Assets/fonts/PixelOperator8.ttf" id="8_joe2w"]
+[ext_resource type="FontFile" uid="uid://xp211qqwmduu" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="9_xpod4"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(576, 324)
 script = ExtResource("1_rvxtf")
 Logs = ExtResource("7_p45cl")
-Speed = 2.0
+Speed = 50.0
 
 [node name="Player" parent="." instance=ExtResource("1_ytgs0")]
 z_index = 2
@@ -51,3 +53,21 @@ limit_bottom = 400
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="LogTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Score" type="RichTextLabel" parent="."]
+z_index = 40
+texture_filter = 1
+offset_left = -178.0
+offset_top = -83.0
+offset_right = -107.0
+offset_bottom = -73.0
+theme_override_fonts/normal_font = ExtResource("8_joe2w")
+theme_override_fonts/bold_font = ExtResource("9_xpod4")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "Score: 0"
+fit_content = true
+scroll_active = false

@@ -1,18 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvxepb2suhjpb"]
+[gd_scene load_steps=5 format=3 uid="uid://dvxepb2suhjpb"]
 
 [ext_resource type="Script" path="res://Scripts/Logs.cs" id="1_4ybab"]
 [ext_resource type="Texture2D" uid="uid://cqpgjrnlhwu3" path="res://Assets/Img/ball2.png" id="1_urhgb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfhth"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m1v8k"]
+
 [node name="Logs" type="Node2D"]
 script = ExtResource("1_4ybab")
 
 [node name="Top" type="Area2D" parent="."]
-position = Vector2(0, 60)
+position = Vector2(0, 70)
 scale = Vector2(0.926, 6)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
+light_mask = 2
+visibility_layer = 2
 scale = Vector2(0.75999, 0.8)
 shape = SubResource("RectangleShape2D_bfhth")
 
@@ -21,8 +27,10 @@ texture_filter = 1
 texture = ExtResource("1_urhgb")
 
 [node name="Bottom" type="Area2D" parent="."]
-position = Vector2(0, -60)
+position = Vector2(0, -70)
 scale = Vector2(1, 6)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
 scale = Vector2(0.75999, 0.8)
@@ -31,3 +39,17 @@ shape = SubResource("RectangleShape2D_bfhth")
 [node name="Sprite2D" type="Sprite2D" parent="Bottom"]
 texture_filter = 1
 texture = ExtResource("1_urhgb")
+
+[node name="ScoreZone" type="Area2D" parent="."]
+position = Vector2(15, 0)
+scale = Vector2(0.5, 3)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZone"]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_m1v8k")
+
+[connection signal="body_entered" from="Top" to="." method="_on_boundary_body_entered"]
+[connection signal="body_entered" from="Bottom" to="." method="_on_boundary_body_entered"]
+[connection signal="body_entered" from="ScoreZone" to="." method="_on_score_zone_body_entered"]

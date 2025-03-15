@@ -6,7 +6,10 @@
 height = 34.0
 
 [node name="Player" type="CharacterBody2D"]
+visibility_layer = 3
 position = Vector2(-1, 0)
+collision_layer = 7
+collision_mask = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

@@ -3,14 +3,25 @@ using System;
 
 public partial class Logs : Node2D
 {
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-		//Position =  new Vector2(0,0);
-	}
+    public override void _Ready()
+    {
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
+    }
+
+    public override void _Process(double delta)
+    {
+    }
+
+    private void _on_boundary_body_entered(Node2D body)
+    {
+        //GetTree().ReloadCurrentScene();
+    }
+    private void _on_score_zone_body_entered(Node2D body)
+    {
+
+        if(Owner is Game game)
+        {
+            game.IncreaseScore();
+        }
+    }
 }
