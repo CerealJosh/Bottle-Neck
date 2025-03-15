@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://binbcp1671o4r"]
+[gd_scene load_steps=3 format=3 uid="uid://bexvgjglldcxe"]
 
-[ext_resource type="Texture2D" uid="uid://bcdomxhp25cfs" path="res://Assets/Img/Bottom.png" id="1_ev7cq"]
+[ext_resource type="Texture2D" uid="uid://bqhulkm71hbdl" path="res://Assets/Img/Top.png" id="1_rmk0s"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8w8n2"]
 
@@ -8,10 +8,10 @@
 position = Vector2(0, 325)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, 16)
+rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_8w8n2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, 26)
-texture = ExtResource("1_ev7cq")
+texture = ExtResource("1_rmk0s")

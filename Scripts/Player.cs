@@ -3,8 +3,8 @@ using System;
 
 public partial class Player : CharacterBody2D
 {
-    public const float Speed = 300.0f;
-    public const float JumpVelocity = -400.0f;
+    [Export]
+    public float JumpVelocity = -200.0f;
 
     public override void _PhysicsProcess(double delta)
     {
@@ -13,7 +13,7 @@ public partial class Player : CharacterBody2D
         // Add the gravity.
         if (!IsOnFloor())
         {
-            velocity += GetGravity() * (float)delta;
+            velocity += GetGravity() / 2.5f * (float)delta;
         }
 
         // Handle Jump.
@@ -21,8 +21,6 @@ public partial class Player : CharacterBody2D
         {
             velocity.Y = JumpVelocity;
         }
-
-        velocity.X = Speed;
 
         Velocity = velocity;
         MoveAndSlide();
