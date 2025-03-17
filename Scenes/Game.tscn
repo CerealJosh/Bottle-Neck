@@ -14,7 +14,8 @@
 position = Vector2(576, 324)
 script = ExtResource("1_rvxtf")
 Logs = ExtResource("7_p45cl")
-Speed = 50.0
+Speed = 80.0
+LogSpeed = 50.0
 
 [node name="Player" parent="." instance=ExtResource("1_ytgs0")]
 z_index = 2
@@ -24,19 +25,20 @@ slide_on_ceiling = false
 script = ExtResource("2_ms2m0")
 JumpVelocity = -150.0
 
-[node name="Node" type="Node" parent="."]
+[node name="Boundaries" type="Node" parent="."]
 
-[node name="Bottom" parent="Node" instance=ExtResource("3_gbne6")]
-position = Vector2(538, 377)
+[node name="Top" parent="Boundaries" instance=ExtResource("4_d5j0l")]
+position = Vector2(697, 249)
 scale = Vector2(0.47, 0.47)
 
-[node name="Top" parent="Node" instance=ExtResource("4_d5j0l")]
-position = Vector2(537, 249)
+[node name="Bottom" parent="Boundaries" instance=ExtResource("3_gbne6")]
+position = Vector2(697, 377)
 scale = Vector2(0.47, 0.47)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_filter = 1
