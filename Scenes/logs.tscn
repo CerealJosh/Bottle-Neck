@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://dvxepb2suhjpb"]
 
 [ext_resource type="Script" path="res://Scripts/Logs.cs" id="1_4ybab"]
-[ext_resource type="Texture2D" uid="uid://cqpgjrnlhwu3" path="res://Assets/Img/ball2.png" id="1_urhgb"]
+[ext_resource type="Texture2D" uid="uid://buyuhng4a0nur" path="res://Assets/Img/Log.png" id="2_oyo5v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfhth"]
+size = Vector2(23.2099, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1v8k"]
 
@@ -12,19 +13,22 @@ script = ExtResource("1_4ybab")
 
 [node name="Top" type="Area2D" parent="."]
 position = Vector2(0, 70)
-scale = Vector2(0.926, 6)
+scale = Vector2(1, 6)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
 light_mask = 2
 visibility_layer = 2
+position = Vector2(-3.54023e-07, 0)
 scale = Vector2(0.75999, 0.8)
 shape = SubResource("RectangleShape2D_bfhth")
 
 [node name="Sprite2D" type="Sprite2D" parent="Top"]
 texture_filter = 1
-texture = ExtResource("1_urhgb")
+position = Vector2(4.76837e-07, -1.33333)
+scale = Vector2(1.07991, 0.166667)
+texture = ExtResource("2_oyo5v")
 
 [node name="Bottom" type="Area2D" parent="."]
 position = Vector2(0, -70)
@@ -33,12 +37,15 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(-0.180346, 0)
 scale = Vector2(0.75999, 0.8)
 shape = SubResource("RectangleShape2D_bfhth")
 
 [node name="Sprite2D" type="Sprite2D" parent="Bottom"]
 texture_filter = 1
-texture = ExtResource("1_urhgb")
+position = Vector2(0, 1.33333)
+scale = Vector2(1, 0.166667)
+texture = ExtResource("2_oyo5v")
 
 [node name="ScoreZone" type="Area2D" parent="."]
 position = Vector2(15, 0)
@@ -47,7 +54,7 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZone"]
-position = Vector2(-4, 0)
+position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_m1v8k")
 
 [connection signal="body_entered" from="Top" to="." method="_on_boundary_body_entered"]

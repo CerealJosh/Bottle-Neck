@@ -14,7 +14,7 @@
 position = Vector2(576, 324)
 script = ExtResource("1_rvxtf")
 Logs = ExtResource("7_p45cl")
-Speed = 80.0
+Speed = 35.0
 LogSpeed = 50.0
 
 [node name="Player" parent="." instance=ExtResource("1_ytgs0")]

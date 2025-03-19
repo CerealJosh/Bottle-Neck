@@ -61,7 +61,7 @@ public partial class Game : Node2D
         {
             RandomNumberGenerator rng = new();
             Logs newLog = Logs.Instantiate<Logs>();
-            newLog.Position = new Vector2(110, rng.RandiRange(-35, 35));
+            newLog.Position = new Vector2(110, rng.RandiRange(-25, 25));
             AddChild(newLog);
             newLog.Owner = this;
             obstacles.Add(newLog);
