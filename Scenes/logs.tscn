@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvxepb2suhjpb"]
+[gd_scene load_steps=6 format=3 uid="uid://dvxepb2suhjpb"]
 
 [ext_resource type="Script" path="res://Scripts/Logs.cs" id="1_4ybab"]
 [ext_resource type="Texture2D" uid="uid://buyuhng4a0nur" path="res://Assets/Img/Log.png" id="2_oyo5v"]
+[ext_resource type="AudioStream" uid="uid://vwfutipdtic" path="res://Assets/SFX/hitmarker_2.mp3" id="3_roa18"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bfhth"]
 size = Vector2(23.2099, 20)
@@ -56,6 +57,10 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreZone"]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_m1v8k")
+
+[node name="HitPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_roa18")
+volume_db = 10.0
 
 [connection signal="body_entered" from="Top" to="." method="_on_boundary_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_boundary_body_entered"]

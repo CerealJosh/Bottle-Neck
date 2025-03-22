@@ -144,6 +144,7 @@ public partial class Game : Node2D
 
         //Hide EndScreen
         endScreen.Visible = false;
+        GetTree().Paused = true;
 
         //Remove Logs
         obstacles.ForEach(obstacle => obstacle.QueueFree());
@@ -156,6 +157,6 @@ public partial class Game : Node2D
         //Reset Player
         player.startPlayer();
         player.Position = _startPosition;
-        GetTree().Paused = true;
+
     }
 }
