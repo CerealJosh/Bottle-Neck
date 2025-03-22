@@ -32,7 +32,7 @@ public partial class Game : Node2D
         obstacles.Clear();
         logTimer = GetNode<Timer>("LogTimer");
         logTimer.Timeout += createLogs;
-        
+
         ProcessMode = ProcessModeEnum.Always;
         GetTree().Paused = true;
     }

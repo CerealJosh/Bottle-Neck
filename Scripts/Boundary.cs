@@ -12,11 +12,6 @@ public partial class Boundary : StaticBody2D
         _sprite2 = GetNode<Sprite2D>("Second");
     }
 
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(double delta)
-    {
-    }
-
     public void InterchangePosition(bool sprite)
     {
         if (sprite == true)

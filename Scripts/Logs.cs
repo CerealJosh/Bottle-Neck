@@ -6,11 +6,6 @@ public partial class Logs : Node2D
     [Signal]
     public delegate void ObstacleHitEventHandler();
 
-    public override void _Process(double delta)
-    {
-        
-    }
-
     private void _on_boundary_body_entered(Node2D body)
     {
         if (body is Player player)
