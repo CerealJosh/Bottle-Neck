@@ -54,4 +54,9 @@ public partial class Player : CharacterBody2D
     {
         playing = false;
     }
+
+    public void startPlayer()
+    {
+        playing = true;
+    }
 }

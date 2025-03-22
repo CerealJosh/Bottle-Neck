@@ -23,11 +23,16 @@ public partial class Game : Node2D
     private bool _swapOne = true;
     private bool started = false;
 
+    private Player player;
+    private Vector2 _startPosition;
+
     private Timer logTimer;
     private Timer endTimer;
 
     public override void _Ready()
     {
+        player = GetNode<Player>("Player");
+        _startPosition = player.Position;
         endScreen = GetNode<Control>("OverScreen");
         top = GetNode<Boundary>("Boundaries/Top/");
         bottom = GetNode<Boundary>("Boundaries/Bottom/");
@@ -123,10 +128,34 @@ public partial class Game : Node2D
 
     public void _on_retry_pressed()
     {
-        GetTree().ReloadCurrentScene();
+        ResetGame();
     }
     public void _on_menu_pressed()
     {
         GetTree().ChangeSceneToFile("../Scenes/Start.tscn");
+    }
+
+    public void ResetGame()
+    {
+        //Reset Score
+        Score = 0;
+        GetNode<RichTextLabel>("Score").Text = "Score: 0";
+        endScreen.GetNode<RichTextLabel>("Container/Score").Text = "Score: ";
+
+        //Hide EndScreen
+        endScreen.Visible = false;
+
+        //Remove Logs
+        obstacles.ForEach(obstacle => obstacle.QueueFree());
+        obstacles.Clear();
+
+        //Reset bool checks
+        playing = false;
+        started = false;
+
+        //Reset Player
+        player.startPlayer();
+        player.Position = _startPosition;
+        GetTree().Paused = true;
     }
 }

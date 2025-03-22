@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckcuxnb42vxt5"]
+[gd_scene load_steps=12 format=3 uid="uid://ckcuxnb42vxt5"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_rvxtf"]
 [ext_resource type="PackedScene" uid="uid://qrghymv4a8nt" path="res://Scenes/Player.tscn" id="1_ytgs0"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dvxepb2suhjpb" path="res://Scenes/logs.tscn" id="7_p45cl"]
 [ext_resource type="FontFile" uid="uid://cqhw4pw3wf31f" path="res://Assets/fonts/PixelOperator8.ttf" id="8_joe2w"]
 [ext_resource type="FontFile" uid="uid://xp211qqwmduu" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="9_xpod4"]
+[ext_resource type="AudioStream" uid="uid://ddmdqhniecgls" path="res://Assets/Audio/safe_space_loopable.ogg" id="10_4ojig"]
 
 [sub_resource type="Theme" id="Theme_rfub5"]
 default_font = ExtResource("8_joe2w")
@@ -127,7 +128,7 @@ fit_content = true
 
 [node name="Score" type="RichTextLabel" parent="OverScreen/Container"]
 texture_filter = 1
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -150,6 +151,12 @@ text = "Retry"
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_4ojig")
+volume_db = 2.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="OverScreen/Container/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="OverScreen/Container/HBoxContainer/Menu" to="." method="_on_menu_pressed"]
