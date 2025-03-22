@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ckcuxnb42vxt5"]
+[gd_scene load_steps=11 format=3 uid="uid://ckcuxnb42vxt5"]
 
 [ext_resource type="Script" path="res://Scripts/Game.cs" id="1_rvxtf"]
 [ext_resource type="PackedScene" uid="uid://qrghymv4a8nt" path="res://Scenes/Player.tscn" id="1_ytgs0"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dvxepb2suhjpb" path="res://Scenes/logs.tscn" id="7_p45cl"]
 [ext_resource type="FontFile" uid="uid://cqhw4pw3wf31f" path="res://Assets/fonts/PixelOperator8.ttf" id="8_joe2w"]
 [ext_resource type="FontFile" uid="uid://xp211qqwmduu" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="9_xpod4"]
+
+[sub_resource type="Theme" id="Theme_rfub5"]
+default_font = ExtResource("8_joe2w")
 
 [node name="Game" type="Node2D"]
 position = Vector2(576, 324)
@@ -22,7 +25,7 @@ z_index = 2
 position = Vector2(-97, -8)
 slide_on_ceiling = false
 script = ExtResource("2_ms2m0")
-JumpVelocity = 185.0
+JumpVelocity = -125.0
 
 [node name="Boundaries" type="Node" parent="."]
 
@@ -58,6 +61,10 @@ drag_vertical_enabled = true
 [node name="LogTimer" type="Timer" parent="."]
 wait_time = 1.5
 
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [node name="Score" type="RichTextLabel" parent="."]
 z_index = 40
 texture_filter = 1
@@ -72,3 +79,77 @@ bbcode_enabled = true
 text = "Score: 0"
 fit_content = true
 scroll_active = false
+
+[node name="OverScreen" type="Control" parent="."]
+visible = false
+z_index = 90
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -194.0
+offset_top = -86.0
+offset_right = -194.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Overlay" type="Panel" parent="OverScreen"]
+z_index = 90
+layout_mode = 0
+offset_right = 311.0
+offset_bottom = 165.0
+
+[node name="Container" type="VBoxContainer" parent="OverScreen"]
+z_index = 91
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 69.0
+offset_top = 51.0
+offset_right = 231.0
+offset_bottom = 111.0
+grow_vertical = 2
+theme = SubResource("Theme_rfub5")
+alignment = 1
+
+[node name="GameOver" type="RichTextLabel" parent="OverScreen/Container"]
+texture_filter = 1
+custom_minimum_size = Vector2(125, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("8_joe2w")
+text = "Game Over
+"
+fit_content = true
+
+[node name="Score" type="RichTextLabel" parent="OverScreen/Container"]
+texture_filter = 1
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("8_joe2w")
+theme_override_font_sizes/normal_font_size = 8
+text = "Score: "
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OverScreen/Container"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Retry" type="Button" parent="OverScreen/Container/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Retry"
+
+[node name="Menu" type="Button" parent="OverScreen/Container/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Menu"
+
+[connection signal="pressed" from="OverScreen/Container/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="OverScreen/Container/HBoxContainer/Menu" to="." method="_on_menu_pressed"]

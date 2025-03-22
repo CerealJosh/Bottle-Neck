@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxv7f0c80ghpx"]
+
+[ext_resource type="Script" path="res://Scripts/Start.cs" id="1_1yiof"]
+[ext_resource type="Texture2D" uid="uid://x88mc864vneo" path="res://Assets/Img/Start.png" id="1_6n0m8"]
+[ext_resource type="FontFile" uid="uid://cqhw4pw3wf31f" path="res://Assets/fonts/PixelOperator8.ttf" id="2_5ca7i"]
+[ext_resource type="FontFile" uid="uid://xp211qqwmduu" path="res://Assets/fonts/PixelOperator8-Bold.ttf" id="3_ds7e7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tk3fw"]
+texture = ExtResource("1_6n0m8")
+
+[sub_resource type="Theme" id="Theme_qmyok"]
+default_font = ExtResource("2_5ca7i")
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_panpy"]
+default_font = ExtResource("3_ds7e7")
+default_font_size = 64
+
+[node name="Control" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_1yiof")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_tk3fw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = -139.0
+offset_right = 730.0
+offset_bottom = 139.0
+grow_vertical = 2
+theme = SubResource("Theme_qmyok")
+theme_override_constants/separation = 10
+
+[node name="Flaily Fish" type="RichTextLabel" parent="VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_panpy")
+text = "Flaily Fish"
+fit_content = true
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+text = "Start"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+text = "Options"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+text = "Exit
+"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

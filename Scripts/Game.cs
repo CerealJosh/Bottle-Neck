@@ -11,6 +11,7 @@ public partial class Game : Node2D
     public float LogSpeed { get; set; }
 
     private List<Logs> obstacles = new();
+    private Control endScreen;
 
     private Boundary bottom;
     private Boundary top;
@@ -23,15 +24,19 @@ public partial class Game : Node2D
     private bool started = false;
 
     private Timer logTimer;
-
+    private Timer endTimer;
 
     public override void _Ready()
     {
+        endScreen = GetNode<Control>("OverScreen");
         top = GetNode<Boundary>("Boundaries/Top/");
         bottom = GetNode<Boundary>("Boundaries/Bottom/");
         obstacles.Clear();
         logTimer = GetNode<Timer>("LogTimer");
+        endTimer = GetNode<Timer>("EndTimer");
+
         logTimer.Timeout += createLogs;
+        endTimer.Timeout += displayEndScreen;
 
         ProcessMode = ProcessModeEnum.Always;
         GetTree().Paused = true;
@@ -104,5 +109,24 @@ public partial class Game : Node2D
     public void stopMovement()
     {
         playing = false;
+        endTimer.Start();
+    }
+
+    public void displayEndScreen()
+    {
+        if (!endScreen.Visible)
+        {
+            endScreen.GetNode<RichTextLabel>("Container/Score").Text += Score.ToString();
+            endScreen.Visible = true;
+        }
+    }
+
+    public void _on_retry_pressed()
+    {
+        GetTree().ReloadCurrentScene();
+    }
+    public void _on_menu_pressed()
+    {
+        GetTree().ChangeSceneToFile("../Scenes/Start.tscn");
     }
 }
