@@ -4,7 +4,8 @@ using System;
 public partial class Player : CharacterBody2D
 {
     [Export]
-    public float JumpVelocity = -200.0f;
+    public float JumpVelocity;
+    private bool playing = true;
 
     public override void _PhysicsProcess(double delta)
     {
@@ -16,13 +17,21 @@ public partial class Player : CharacterBody2D
             velocity += GetGravity() / 2.5f * (float)delta;
         }
 
-        // Handle Jump.
-        if (Input.IsActionJustPressed("Jump")) //&& IsOnFloor())
+        if (playing)
         {
-            velocity.Y = JumpVelocity;
-        }
+            // Handle Jump.
+            if (Input.IsActionJustPressed("Jump")) //&& IsOnFloor())
+            {
+                velocity.Y = JumpVelocity;
+            }
 
+        }
         Velocity = velocity;
         MoveAndSlide();
+    }
+
+    public void stopPlayer()
+    {
+        playing = false;
     }
 }

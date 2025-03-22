@@ -20,10 +20,9 @@ LogSpeed = 50.0
 [node name="Player" parent="." instance=ExtResource("1_ytgs0")]
 z_index = 2
 position = Vector2(-97, -8)
-scale = Vector2(0.4, 0.4)
 slide_on_ceiling = false
 script = ExtResource("2_ms2m0")
-JumpVelocity = -150.0
+JumpVelocity = 185.0
 
 [node name="Boundaries" type="Node" parent="."]
 
